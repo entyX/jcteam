@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <body>
+        
+    <title>
+        JC Webpage
+    </title>
+        
+    <h1 style="color: grey; font-size:500%;text-align:center;>">JC Webpage</h1>
+<p style="color:slateblue; font-size: 250%;">Additional notes:</p>
+    <p> -Make next project by friday</p>
+    <p> -Sat and Sun optional days</p>
+
+        <a href="https://www.w3schools.com">This is link to w3 schools</a>
+            <img src= "JCMASTER.jpg" alt = "JCMASTER">
+  <h1 style="color:orange;font-size:300%;text-align:center;">More will be added here...</h1>
+        
+<p style="color:slateblue; font-size: 250%;text-align:center;">>More will be added here...</p>
+        <p style="color:slateblue; font-size: 150%;text-align:center;">-make sure to duplicate your tab before pressing any links</p>
+        <button onclick="window.print()">Print this page</button>
+        
+<script> 
+      
+
+        </script>
+        </body>
+</head>
+</html> 
