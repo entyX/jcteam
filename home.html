@@ -43,8 +43,8 @@ body {font-family: Arial;}
 <p>Welcome to JC, a website built for fun and games!</p>
 
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Home')">Home</button>
-  <button class="tablinks" onclick="openCity(event, 'Games')">Games</button>
+  <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
+  <button class="tablinks" onclick="openTab(event, 'Games')">Games</button>
 </div>
 
 <div id="Home" class="tabcontent">
@@ -58,7 +58,7 @@ body {font-family: Arial;}
 </div>
 
 <script>
-function openCity(evt, tabName) {
+function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
