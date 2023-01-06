@@ -1,5 +1,9 @@
 # jcteam updates:
 
-day 11: work on new layout of website, also please change your github account to link to your personal email, not the school account
+Day 13 goals:
+1. Establish a password page
+2. Work on website layout
+3. Add games
+Fish stiks for life
 
 
