@@ -6,9 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="tictactoe.css"></link>
     <title>JC - TicTacToe</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
     <script src="tictactoe.js"></script>
+    
+<style>
+header {
+  background-color: #666;
+  padding: 0.5px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+  font-family: sans-serif;
+}
+  
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #404040;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #7CB9E8;
+}
+  
+</style>
 </head>
-<body style="background-color:lightblue">
+<body>
+    
+<header>
+  <h1>TicTacToe</h1>
+  <p>The simple 3x3 game that involves little strategy</p>
+<ul>
+  <li><a class="active" href="index.html">Home</a></li>
+  <li><a href="games.html">Games</a></li>
+</ul>
+  </header>
+    
  <div id="cell-00" onclick=nextMove(0,0) class="box1">a</div>
  <div id="cell-01" onclick=nextMove(0,1) class="box2">b</div>      
  <div id="cell-02" onclick=nextMove(0,2) class="box3">c</div>      
@@ -44,6 +97,7 @@
 
  </div>      
   -->
-
+<h3 style="font-family:courier; text-align:center;">Instructions:</h3>
+<p style="font-family:courier; text-align:center;">Click on a box to mark your symbol. Then switch players. Repeat until someone wins or if there is a draw.</p>
 </body>
 </html>
