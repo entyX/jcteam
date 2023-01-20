@@ -7,6 +7,48 @@
     <link rel="stylesheet" href="style.css">
     link rel="icon" type="image/x-icon" href="https://entyx.github.io/jcteam/favicon.png">
     <title>JC - Naruto Run</title>
+    
+<style>
+header {
+  background-color: #666;
+  padding: 0.5px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+  font-family: sans-serif;
+}
+  
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #404040;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #7CB9E8;
+}
+    </style>
+    
     <script>
 const specials = new Map();
     specials.set(24,`<img src="happyEmoji.png" width=20px height=20px>` + `24`);
@@ -171,12 +213,24 @@ td{
 }
 
 </style>
+<header>
+  <h1>Naruto Run</h1>
+  <p>Snakes and ladders, but it's Naruto and Sasuke racing?</p>
+<ul>
+  <li><a href="/jcteam">Home</a></li>
+  <li><a class="active" href="https://entyx.github.io/jcteam/games.html">Games</a></li>
+</ul>
+  </header>
     <div>
         <table id='board'>
         </table>
         <button id="dice" onclick="diceroll()"></button>
     </div>
     <button onclick="createNewBoard()">Start new game</button>
+    
+    <h3 style="font-family:courier; text-align:center;">Instructions:</h3>
+    <p style="font-family:courier; text-align:center;">Click 'start' to start the game. Then click on the dice above the start button to roll a number. Then alternate with another person.</p>
+    
 </body>
 </html>
 
