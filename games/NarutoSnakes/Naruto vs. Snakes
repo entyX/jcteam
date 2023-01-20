@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script>
+const specials = new Map();
+    specials.set(24,`<img src="happyEmoji.png" width=20px height=20px>` + `24`);
+    specials.set(55,`<img src="happyEmoji.png" width=20px height=20px>` + `55`);
+    specials.set(83,`<img src="happyEmoji.png" width=20px height=20px>` + `83`);
+    
+    specials.set(97,`<img src="sadEmoji.jpeg" width=15px height = 15px>` + `97`);
+    specials.set(54,`<img src="sadEmoji.jpeg" width=15px height = 15px>` + `54`);
+    specials.set(68,`<img src="sadEmoji.jpeg" width=15px height = 15px>` + `68`);
+
+var player1score = 1
+var player2score = 1
+var playsturn = `player 1`
+var player1 = {
+    name:'p1',
+    score:1,
+    img:'naruto.jpg'
+};
+var player2 = {
+    name:'p2',
+    score:1,
+    img:'saskue.png'
+};
+
+var currentPlayer = player1;
+const timer = ms => new Promise(res => setTimeout(res, ms));
+
+async function movePlayer(player, toCell) {
+    if(player.score < toCell){
+        for(i = player.score+1; i <= toCell;i++){
+            document.getElementById(`cell`+player.score).innerHTML = getCellBase(player.score)
+            player.score = i;
+            document.getElementById(`cell`+player.score).innerHTML = `<img src =${player.img} width=20px height=20px` + player.score + `>`
+            await timer(300);
+        }
+    }
+    else if(player.score > toCell){
+        for(j = player.score - 1 ; j >= toCell;j++){
+            document.getElementById(`cell`+player.score).innerHTML = getCellBase(player.score)
+            player.score = i;
+            document.getElementById(`cell`+player.score).innerHTML = `<img src =${player.img} width=20px height=20px` + player.score + `>`
+            await timer(300);
+        }
+    }
+}
+
+function getCellBase(i) {
+ var cellBaseContent = specials.get(i);
+ if (cellBaseContent) {
+     return cellBaseContent;
+ }
+ return i;
+}
+async function diceroll(){
+    var dicval = Math.floor(Math.random() * 6) + 1;
+    document.getElementById(`dice`).innerHTML = dicval
+
+
+    //document.getElementById(`cell`+currentPlayer.score).innerHTML = currentPlayer.score;
+    //currentPlayer.score+=dicval;
+    
+    console.log(`current player one score is `+player1.score)
+    console.log(`current player two score is `+player2.score)
+    var moveTo = currentPlayer.score + dicval;
+    if(moveTo == 24||moveTo == 55||moveTo == 84){
+        moveTo += 10
+    }
+    else if(moveTo == 97||moveTo == 54||moveTo == 68){
+        moveTo -= 10
+    }
+    await movePlayer(currentPlayer, moveTo);
+
+    if(currentPlayer.score >= 100){
+        alert(currentPlayer.name + `wins`)
+    }
+    document.getElementById(`cell`+player1.score).innerHTML = `<img src =${player1.img} width=20px height=20px` + player1.score + `>`
+    document.getElementById(`cell`+player2.score).innerHTML = `<img src =${player2.img} width=20px height=20px` + player2.score + `>`
+
+    currentPlayer = (currentPlayer.name == 'p1') ? player2 : player1
+}
+
+function createNewBoard(){
+    var board = document.getElementById('board');
+    var boardHTML = "";
+
+    var id = 100;
+    var toggle = 0;
+    for(var i = 0;i < 10; i++){
+        var tdStr = "";
+        for(var j = 0; j < 10; j++) {
+            /* 100 - 91
+                81 - 90
+                80 - 71
+                61 - 70
+             */
+            if (toggle == 0) {
+                tdStr = tdStr + `<td id=cell${id}>${getCellBase(id)}</td>` ;
+            } else {
+                tdStr = `<td id=cell${id}>${getCellBase(id)}</td>` + tdStr;
+            }
+            id--;
+        }
+        toggle = (toggle == 0) ? 1 : 0;
+        boardHTML += `<tr>${tdStr}</tr>`;
+    }
+
+    board.innerHTML = boardHTML;
+
+    // set emojis
+    //document.getElementById('cell24').innerHTML = `<img src="happyEmoji.png" width=20px height=20px>` + `24`
+    //document.getElementById('cell55').innerHTML = `<img src="happyEmoji.png" width=20px height=20px>` + `55`
+    //document.getElementById('cell83').innerHTML = `<img src="happyEmoji.png" width=20px height=20px>` + `83`
+    //document.getElementById(`cell97`).innerHTML = `<img src="sadEmoji.jpeg" width=15px height = 15px>` + `97`
+    //document.getElementById(`cell54`).innerHTML = `<img src="sadEmoji.jpeg" width=15px height = 15px>` + `54`
+    //document.getElementById(`cell68`).innerHTML = `<img src="sadEmoji.jpeg" width=15px height = 15px>` + `68`
+}
+
+
+
+var arraynum = [
+[1,2,3,4,5,6,7,8,9,10],
+[20,19,18,17,16,15,14,13,12,11],
+[21,22,23,24,25,26,26,28,29,30],
+[40,39,38,37,36,35,34,33,32,31],
+[41,42,43,44,45,46,47,48,49,50],
+[60,59,58,57,56,55,54,53,52,51],
+[61,62,63,64,65,66,67,68,69,70],
+[80,79,78,77,76,75,74,73,72,71],
+[81,82,83,84,85,86,87,88,89,90],
+[100,99,98,97,96,95,94,93,92,91]]
+var array = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+]
+var count = 1;
+var toggle = 0;
+for(var i = 0;i < 10; i++){
+    for(var j = 0; j < 10; j++){
+        var col = Math.abs(j - toggle);
+        array[i][col] = count++;
+    }
+    toggle = (toggle == 0) ? 9 : 0;
+}
+console.log(array)
+   </script>
+    <title>Document</title>
+</head>
+<body>
+<style>
+td{
+    border: 1px gray solid;
+    width: 70px;
+    height: 70px;
+}
+
+</style>
+    <div>
+        <table id='board'>
+        </table>
+        <button id="dice" onclick="diceroll()"></button>
+    </div>
+    <button onclick="createNewBoard()">Start new game</button>
+</body>
+</html>
+
+
