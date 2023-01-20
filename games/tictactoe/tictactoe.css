@@ -1,4 +1,8 @@
 
+body{
+overflow:hidden
+}
+
 .box1{
     margin: auto;
     height: 99px;
