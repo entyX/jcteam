@@ -70,6 +70,22 @@ button {
                         box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px, rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
                         transition-duration: 0.1s;
                     }
+  * {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+  
 </style>
 </head>
 <body>
@@ -86,18 +102,38 @@ button {
   
   <h2 style="font-family: sans-serif;">Javascript Games:<h2>
   
-  <form action="games/javascript-breakout.html" >
+
+  <div class="row">
+    
+  <div class="column">
+    <img src="https://entyx.github.io/jcteam/images/javascriptbreakout.png" alt="JavascriptBreakout" style="width:100%">
+    <form action="games/javascript-breakout.html" >
   <button type="submit">Play Javascript Breakout</button>                           
   </form>
-  <form action="games/tictactoe/tictactoe.html" >
+  </div>
+  
+  <div class="column">
+    <img src="https://entyx.github.io/jcteam/images/tictactoe.png" alt="TicTacToe" style="width:100%">
+    <form action="games/tictactoe/tictactoe.html" >
   <button type="submit">Play TicTacToe</button>                      
   </form>
-  <form action="games/NarutoSnakes/narutorun.html" >
+  </div>
+    
+  <div class="column">
+    <img src="https://entyx.github.io/jcteam/images/narutorun.png" alt="NarutoRun" style="width:100%">
+    <form action="games/NarutoSnakes/narutorun.html" >
   <button type="submit">Play Naruto Run</button>                      
   </form>
-  <form action="games/BalloonPopper/balloonpopper.html" >
+  </div>
+    
+  <div class="column">
+    <img src="https://entyx.github.io/jcteam/images/balloonpop.png" alt="BalloonPopper" style="width:100%">
+    <form action="games/BalloonPopper/balloonpopper.html" >
   <button type="submit">Play Balloon Popper</button>                      
   </form>
+  </div>
+    
+</div>
     
 </body>
 </html>
