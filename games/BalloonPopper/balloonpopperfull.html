@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      button {
+                    	
+                    	display: inline-block;
+                    	outline: 0;
+                    	cursor: pointer;
+                    	padding: 5px 16px;
+                    	font-size: 14px;
+                    	font-weight: 500;
+                    	line-height: 20px;
+                    	vertical-align: middle;
+                    	border: 1px solid;
+                    	border-radius: 6px;
+                    	color: #0366d6;
+                    	background-color: #fafbfc;
+                    	border-color: #1b1f2326;
+                    	box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px, 										        
+                      rgba(255, 255, 255, 0.25) 0px 1px 0px 0px inset;
+                    	transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+                    	transition-property: color, background-color, 												        
+                      border-color;
+                    }
+                    button:hover {
+                        color: #ffffff;
+                        background-color: #0366d6;
+                        border-color: #1b1f2326;
+                        box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px, rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+                        transition-duration: 0.1s;
+                    }
+    </style>
+  </head>
+    <body style = "background-color: #32CD32">
+        <img id = "balloon" onmousedown = "popped()" src = "balloon.png" style = "position:                 absolute; width: 100px; top: 500px; left: 500px;">
+        <p id = "scoreText" style = "color: yellow; font-size: 20px; font-family:Arial">Score: 0</p>
+      
+      <form action="games/BalloonPopper/balloonpopper.html">
+  <button type="submit">Back to website.</button>                      
+  </form>
+      
+    </body>
+    <script>
+        var score = 0, speed = 1;
+        function setLeft(id,x) {document.getElementById(id).style.left = x + "px";}
+        function setTop(id,y) {document.getElementById(id).style.top = y + "px";}
+        function getLeft(id) {return document.getElementById(id).offsetLeft;}
+        function getTop(id) {return document.getElementById(id).offsetTop;}
+        function randomNumber(low,high) {return(Math.floor(low + Math.random() * (1 + high-low)));}
+        var gameTimer = window.setInterval(floatUp, 25);
+        
+        function floatUp() {
+            var y = getTop("balloon");
+            if (y < -100) {
+                gameOver();
+            }
+            setTop("balloon", y-speed);
+        }
+        
+        function popped() {
+            score++;
+            speed++;
+            document.getElementById("scoreText").innerText = "Score: " + score;
+            setLeft("balloon", randomNumber(0, window.innerWidth - 100));
+            setTop("balloon", window.innerHeight);
+        }
+        
+        function gameOver() {
+            clearInterval(gameTimer);
+                      alert("Game Over! You scored: "+score);
+            location.reload();
+        }
+    </script>
+</html>                                                                                                                                                      
