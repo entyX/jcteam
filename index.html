@@ -89,6 +89,9 @@ button {
 </head>
 <body>
 <header>
+<div style="text-align:right;">
+  <button onclick="myPassword()">Login</button>
+</div>
   <h1>JC Team</h1>
   <p>Welcome to JCTeam, a website built to play fun games!</p>
 <ul>
@@ -107,4 +110,16 @@ button {
   <hr>
 
 </body>
+<script>
+var password = 1234567890;
+function myPassword() {
+  answer = prompt("What is the password?");
+  if (answer == password) {
+    alert("You got it!")
+  }
+  else {
+    alert("Get outta here!")
+  }
+}
+</script>
 </html>
