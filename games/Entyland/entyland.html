@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="C:\Users\entyt\OneDrive\Desktop\Entyland\entyland.css">
+
+        <div style="text-align: center; font-family: sans-serif;">
+        <h1>Entyland</h1>
+        <p>You are a brave soldier that must conquer the world of Entyland!</p>
+        <p>Start by buying some land!</p>
+        <br>
+        <hr>
+        <br>
+        </div>
+    </head>
+    <body>
+        <div style="text-align: center; font-family: sans-serif;">
+            <input id="settlement" placeholder="Enter name of settlement">
+            <button onclick="setName()">Confirm</button>
+                <p id="gold">Gold: -</p>
+                <img src="\Users\entyt\OneDrive\Desktop\Entyland\gold.png" alt="Gold" width="25" height="25">
+                <p id="Alert" style="color: red;"></p>
+        </div>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Shop')">Shop</button>
+            <button class="tablinks" onclick="openTab(event, 'Inventory')">Inventory</button>
+            <button class="tablinks" onclick="openTab(event, 'Settings')">Settings</button>
+            <button class="tablinks" onclick="openTab(event, 'Expansion')">Expansion</button>
+          </div>
+          
+          <div id="Shop" class="tabcontent">
+            <button onclick="buyLand()">Buy Land</button>
+            <p> Cost: 50 Gold</p>
+          </div>
+          
+          <div id="Inventory" class="tabcontent">
+            <p id="land">Land (acres): 0</p>
+            <p id="wood">Wood: 0</p>
+            <p id="stone">Stone: 0</p>
+          </div>
+
+          <div id="Settings" class="tabcontent">
+            <button onclick="resetGame()">Reset Game</button>
+          </div>
+
+          <div id="Expansion" class="tabcontent">
+            <p>Coming soon...</p>
+          </div>
+
+          <script src="C:\Users\entyt\OneDrive\Desktop\Entyland\entyland.js"></script>
+
+          <footer>
+            <div style="text-align: center;">
+            <p>Entyland Alpha</p>
+            <p>Copyright 2023</p>
+            <p>Go sub to EntyXD!</p>
+            </div>
+          </footer>
+    </body>
+</html>
