@@ -1,0 +1,37 @@
+Entyland Changelog:
+
+8/22/23
+v0.1 - Release
+v0.2 - Adds buy land button with gold counter
+v0.3 - Fixes spelling mistake
+v0.4 - Makes it so that you cant have negative gold
+v0.5 - New font for text with efficient code
+v0.6 - Tab development part 1
+v0.7 - Tab development part 2 (shoves all code into tabs for organization)
+v0.8 - Allows you to enter name of your settlement
+v0.9 - Cost of land shown :)
+v0.10 - Color to the button and name box
+
+8/25/23
+v0.11 - Reset inventory tab and created settings tab
+
+8/27/23
+v0.12 - Created external code to clean up file
+v0.13 - Added gold image
+v0.14 - Land variable created
+v0.15 - Local storage implemented
+
+8/29/23
+v0.16 - Resetting storage implemented along with reset safety!
+v0.17 - Shows that the game actually does get reset
+v0.18 - Shows variable info at start
+v0.19 - Confirm button next to settlement name + added reccommended bar!
+
+9/5/23
+v0.20 - Settlement name now saves after clicking Confirm!
+v0.21 - You can now reset name along with game
+v0.22 - Removed Recommended bar!
+v0.23 - Extra details on bottom
+v0.24 - Wood and Stone variables added
+v0.25 - Fixed a land name bug
+v0.26 - Giant bugs fixed + added Expansion tab.
