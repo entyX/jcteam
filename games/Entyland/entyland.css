@@ -47,3 +47,17 @@ input {
     text-align: center;
     background-color: rgb(180, 180, 180);
 }
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 20px;
+    padding: 5px;
+  }
+  
