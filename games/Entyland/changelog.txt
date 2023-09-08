@@ -1,7 +1,7 @@
 Entyland Changelog:
 
 8/22/23
-v0.1 - Release
+v0.1 - Alpha Release
 v0.2 - Adds buy land button with gold counter
 v0.3 - Fixes spelling mistake
 v0.4 - Makes it so that you cant have negative gold
@@ -35,3 +35,18 @@ v0.23 - Extra details on bottom
 v0.24 - Wood and Stone variables added
 v0.25 - Fixed a land name bug
 v0.26 - Giant bugs fixed + added Expansion tab.
+v0.27 - Ported to jcteam.pages.dev + Got its first tester! [PORTED]
+v0.28 - Iron and toolkit variables added
+v0.29 - Buttons now label price + added Clear land button + removed Expansion tab + added new credit!
+v0.30 - Added the cleared land variable!
+v0.31 - You can now clear land!
+
+9/6/23
+v0.32 - Clearing land now costs toolkits
+v0.33 - Fixed a bug that didnt show accurate toolkit value
+v0.34 - Added logo!
+
+9/7/23
+v0.35 - Gold picture next to variable!
+v0.36 - The news has been added!
+v0.37 - Biomes have been added! You can now collect randomized resources! BIGGEST UPDATE SO FAR!
