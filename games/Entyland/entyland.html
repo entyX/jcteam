@@ -17,48 +17,96 @@
             <input id="settlement" placeholder="Enter name of settlement">
             <button onclick="setName()">Confirm</button>
         </div>
-        <div style="text-align: center;">
+        <p></p>
+        <div class="row">
+          <pre>
+            <p>                                </p>
+          </pre>
+            <div style="background-color: lightgrey; width: 1000px; border: 5px solid black; padding: 10px; margin: 0px;">
+            <h3>Quick Stats</h3>
             <div class="row">
-            <pre>
-            <p>                                                                                                                             </p>
-            </pre>
             <img src="https://jcteam.pages.dev/games/Entyland/gold.png" alt="Gold" width="40" height="40">
             <p id="gold">Gold:</p>
+            <pre>
+            <p>   </p>
+            </pre>
+            <img src="https://jcteam.pages.dev/games/Entyland/house.png" alt="House" width="40" height="40">
+            <p id="house">Houses:</p>
+            <pre>
+              <p>   </p>
+            </pre>
+              <img src="https://jcteam.pages.dev/games/Entyland/people.png" alt="People" width="40" height="40">
+              <p id="people">People:</p>
             </div>
+            </div>
+            <!--</div> -->
+            
+            <div style="background-color: lightgrey; width: 200px; border: 5px solid black; padding: 10px; margin: 0px;">
+              <h3>News</h3>
             <p id="news" style="color: red;">This is where news will take place!</p>
-        </div>
+            </div>
+            </div>
 
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Shop')">Shop</button>
-            <button class="tablinks" onclick="openTab(event, 'Inventory')">Inventory</button>
-            <button class="tablinks" onclick="openTab(event, 'Settings')">Settings</button>
-          </div>
-          
-          <div id="Shop" class="tabcontent">
-            <button onclick="buyLand()">Buy Land (Cost: 50 gold)</button>
-            <button onclick="clearLand()">Clear Land (Cost: 1 toolkit)</button>
-          </div>
-          
-          <div id="Inventory" class="tabcontent">
-            <p id="land">Land (acres): 0</p>
-            <p id="cland">Cleared Land (acres): 0</p>
-            <p id="toolkit">Toolkit: 5</p>
-            <p id="wood">Wood: 0</p>
-            <p id="stone">Stone: 0</p>
-            <p id="iron">Iron: 0</p>
-          </div>
+            <!-- <div class="row"> -->
+            <p></p>
 
-          <div id="Settings" class="tabcontent">
-            <button onclick="resetGame()">Reset Game</button>
-          </div>
+            <div class="tab" style="text-align: center;">
+              <button class="tablinks" onclick="openTab(event, 'Shop')">💵Shop</button>
+              <button class="tablinks" onclick="openTab(event, 'Build')">🛠️Build</button>
+              <button class="tablinks" onclick="openTab(event, 'Inventory')">📂Inventory</button>
+              <button class="tablinks" onclick="openTab(event, 'Business')">💼Business</button>
+              <button class="tablinks" onclick="openTab(event, 'Settings')">⚙️Settings</button>
+              <button class="tablinks" onclick="openTab(event, 'Credits')">🏆Credits</button>
+            </div>
+
+            <div id="Shop" class="tabcontent">
+              <button onclick="buyLand()">Conquer Land (Cost: 50 gold)</button>
+              <button onclick="clearLand()">Clear Land (Cost: 1 toolkit)</button>
+            </div>
+  
+            <div id="Build" class="tabcontent">
+              <button onclick="Btoolkit()">Craft 5 Toolkits (Materials: Stone x10 + Wood x5)</button>
+              <button onclick="Bhouse()">Build House (Materials: Stone x40 + Wood x20)</button>
+            </div>
+            
+            <div id="Inventory" class="tabcontent">
+              <div class="row">
+              <div class="column">
+              <p id="land">Land (acres): 0</p>
+              <p id="cland">Cleared Land (acres): 0</p>
+              <p id="toolkit">Toolkit: 5</p>
+              <p id="wood">Wood: 0</p>
+              </div>
+              <div class="column">
+                <p id="stone">Stone: 0</p>
+                <p id="iron">Iron: 0</p>
+              </div>
+            </div>
+            </div>
+
+            <div id="Business" class="tabcontent">
+              <p id="gpm">Gold per Second: 0</p>
+            </div>
+  
+            <div id="Settings" class="tabcontent">
+              <button onclick="resetGame()">Reset Game</button>
+            </div>
+
+            <div id="Credits" class="tabcontent">
+              <p>EntyXD - Game developer</p>
+              <p>Monke - Game tester and idea maker</p>
+              <p>boandme - Game tester</p>
+            </div>
+
+        <!-- </div> -->
 
           <script src="https://jcteam.pages.dev/games/Entyland/entyland.js"></script>
 
           <footer>
             <div style="text-align: center;">
-            <p>Entyland v0.37 (tested by Monke and boandme)</p>
-            <p>Copyright 2023</p>
-            <p>Go sub to EntyXD!</p>
+            <p>Entyland© Alpha 2023</p>
+            <p>Developed by Enty. Go subscribe to him <a href="https://www.youtube.com/channel/UC-0hejafjtYkCprTRt61w0A">here</a>!</p>
+            <p>Ported to JCteam official website!</p>
             </div>
           </footer>
     </body>
