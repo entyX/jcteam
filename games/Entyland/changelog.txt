@@ -49,4 +49,21 @@ v0.34 - Added logo!
 9/7/23
 v0.35 - Gold picture next to variable!
 v0.36 - The news has been added!
-v0.37 - Biomes have been added! You can now collect randomized resources! BIGGEST UPDATE SO FAR!
+v0.37 - Biomes have been added! You can now collect randomized resources! BIGGEST UPDATE SO FAR! [PORTED]
+v0.38 - Added Build tab and emojis on the tabs to make it look more nice!
+v0.39 - Bug fixed in emojis!
+v0.40 - Allowed user to craft toolkits!
+v0.41 - A better layout installed!
+v0.42 - Credits tab added!
+
+9/8/23
+v0.43 - Edited box layout and organized inventory tab!
+v0.44 - Changed box layout and allowed user to build houses!
+v0.45 - Added people variable layout
+v0.46 - Added people + yt link!
+
+9/9/23
+v0.47 - Added business tab!
+v0.48 - Estimated time variable added
+v0.49 - Gold per min!
+v0.50 - Entyland 0.5 is released! Gold per second! [PORTED]
