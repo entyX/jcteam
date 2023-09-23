@@ -1,20 +1,27 @@
 // variables
 var randombiome = 0;
 var randomNum = 0;
+var ranInt = 0;
 var seconds = 1;
+var Htimer = 10;
+var Ftimer = 3;
+var hWarning = 0;
+var float = 0;
 
 // function show variables
 function showVar() {
   document.getElementById("land").innerText = "Land (acres): "+localStorage.land;
   document.getElementById("cland").innerText = "Cleared Land (acres): "+localStorage.cland;
-  document.getElementById("gold").innerText = "Gold: "+localStorage.gold;
+  document.getElementById("gold").innerText = "Gold: "+Math.floor(localStorage.gold);
   document.getElementById("toolkit").innerText = "Toolkit: "+localStorage.toolkit;
   document.getElementById("settlement").value = localStorage.settlement;
   document.getElementById("wood").innerText = "Wood: "+localStorage.wood;
   document.getElementById("stone").innerText = "Stone: "+localStorage.stone;
   document.getElementById("iron").innerText = "Iron: "+localStorage.iron;
   document.getElementById("house").innerText = "Houses: "+localStorage.house;
-  document.getElementById("people").innerText = "People: "+localStorage.people;
+  document.getElementById("people").innerText = "People: "+Math.floor(localStorage.people);
+  document.getElementById("food").innerText = "Food: "+Math.floor(localStorage.food);
+  document.getElementById("farm").innerText = "Farms: "+localStorage.farm;
 }
 
 // show variables at start
@@ -25,11 +32,16 @@ showVar();
               if (localStorage.gold > 0) {
                 localStorage.land = Number(localStorage.land)+1;
                 localStorage.gold = Number(localStorage.gold)-50;
+                if (localStorage.gold < 0){
+                  localStorage.gold = 0;
+                  document.getElementById("news").innerText = "It's not a good idea to go in debt!";
+                } else {
                 document.getElementById("news").innerText = "You conquered land and spent 50 gold on the border!";
-              }
-              else {
+                }
+              } else {
                 alert("Not enough gold...")
                 document.getElementById("news").innerText = "You realized you didn't have enough gold...";
+                
               }
             } else {
               localStorage.land = 1;
@@ -37,6 +49,11 @@ showVar();
             document.getElementById("land").innerText = "Land (acres): "+localStorage.land;
             document.getElementById("gold").innerText = "Gold: "+localStorage.gold; 
         }
+
+        function rndInt(min, max) {
+          Math.floor(Math.random() * (max - min)) + min;
+        }
+
 
         function clearLand() {
             if (localStorage.cland) {
@@ -46,19 +63,20 @@ showVar();
                         localStorage.land = Number(localStorage.land)-1;
                         localStorage.cland = Number(localStorage.cland)+1;
                         localStorage.toolkit = Number(localStorage.toolkit)-1;
-
+                        
                         // give the rewards!
                         randombiome = Math.floor(Math.random() * 2);
                         if (randombiome == 0) {
-                            localStorage.wood = Number(localStorage.wood)+Math.floor(Math.random() * 20);
-                            localStorage.stone = Number(localStorage.wood)+Math.floor(Math.random() * 5);
+                            localStorage.wood = Number(localStorage.wood)+Math.floor(Math.random() * (21 - 15)) + 15;
+                            localStorage.stone = Number(localStorage.stone)+Math.floor(Math.random() * (5 - 2)) + 2;
                             document.getElementById("news").innerText = "You identified that your land was a Forest! You cleared it!";
                         }
+
                         if (randombiome == 1) {
-                            localStorage.stone = Number(localStorage.wood)+Math.floor(Math.random() * 20);
-                            randomNum = Number(localStorage.wood)+Math.floor(Math.random() * 5);
+                            localStorage.stone = Number(localStorage.stone)+Math.floor(Math.random() * (21 - 15)) + 15;
+                            randomNum = Math.floor(Math.random() * 5);
                             if (randomNum == 4) {
-                                localStorage.iron = Number(localStorage.wood)+Math.floor(Math.random() * 3);
+                                localStorage.iron = Number(localStorage.wood)+Math.floor(Math.random() * (4 - 1)) + 1;
                             }
                             document.getElementById("news").innerText = "You identified that your land was a Mountain! You cleared it!";
                         }
@@ -106,19 +124,21 @@ showVar();
         }
 
         function Bhouse() {
-          if (localStorage.stone >= 40) {
-            if (localStorage.wood >= 20) {
-              localStorage.stone = Number(localStorage.stone)-40;
-              localStorage.wood = Number(localStorage.wood)-20;
+          if (localStorage.stone >= 30) {
+            if (localStorage.wood >= 30) {
+              localStorage.stone = Number(localStorage.stone)-30;
+              localStorage.wood = Number(localStorage.wood)-30;
               localStorage.house = Number(localStorage.house)+1;
+              localStorage.cland = Number(localStorage.cland)-1;
 
               document.getElementById("house").innerText = "Houses: "+localStorage.house;
               document.getElementById("wood").innerText = "Wood: "+localStorage.wood;
               document.getElementById("stone").innerText = "Stone: "+localStorage.stone;
+              document.getElementById("cland").innerText = "Cleared Land (acres): "+localStorage.cland;
               document.getElementById("news").innerText = "You just built a house in your settlement!";
 
               localStorage.people = Number(localStorage.people)+4;
-              document.getElementById("people").innerText = "people: "+localStorage.people;
+              document.getElementById("people").innerText = "People: "+localStorage.people;
 
             } else {
               alert("Not enough wood...")
@@ -130,21 +150,85 @@ showVar();
           }
         }
 
+        function Bfarm() {
+          if (localStorage.stone >= 10) {
+            if (localStorage.wood >= 20) {
+              localStorage.stone = Number(localStorage.stone)-10;
+              localStorage.wood = Number(localStorage.wood)-20;
+              localStorage.farm = Number(localStorage.farm)+1;
+              localStorage.cland = Number(localStorage.cland)-1;
+
+              document.getElementById("food").innerText = "Food: "+localStorage.food;
+              document.getElementById("wood").innerText = "Wood: "+localStorage.wood;
+              document.getElementById("stone").innerText = "Stone: "+localStorage.stone;
+              document.getElementById("cland").innerText = "Cleared Land (acres): "+localStorage.cland;
+              document.getElementById("news").innerText = "You just built a farm in your settlement!";
+
+            } else {
+              alert("Not enough wood...")
+              document.getElementById("news").innerText = "You sadly didn't have enough wood to build a farm...";
+            }
+          } else {
+            alert("Not enough stone...")
+            document.getElementById("news").innerText = "You sadly didn't have enough stone to build a farm...";
+          }
+        }
+
         // auto gold
         int = setInterval(goldInterval, 1000);
 
         function goldInterval() {
           seconds -= 1
-          document.getElementById("gpm").innerText = "Gold per Second:"+1 * localStorage.people;
-
-          if (seconds == 0) {
-            clearInterval(int);
-              seconds = 1;
-              localStorage.gold = Number(localStorage.gold)+(1 * localStorage.people);
-              document.getElementById("gold").innerText = "Gold: "+localStorage.gold;
-              int = setInterval(goldInterval, 1000);
+          if (seconds <= 0) {
+            seconds = 1
+            if (localStorage.people <= 1) {
+            localStorage.gold = Number(localStorage.gold)
+            } else {
+              localStorage.gold = Number(localStorage.gold) + Number(localStorage.people);
+            }
+            document.getElementById("gold").innerText = "Gold: "+Math.floor(localStorage.gold);
           }
         }
+
+        // auto farm
+        intF = setInterval(farmInterval, 1000);
+
+        function farmInterval() {
+          Ftimer -= 1
+
+          if (Ftimer == 0) {
+            clearInterval(intF);
+              Ftimer = 3;
+              localStorage.food = Number(localStorage.food)+(1 * localStorage.farm);
+              document.getElementById("food").innerText = "Food: "+Math.floor(localStorage.food);
+              intF = setInterval(farmInterval, 1000);
+          }
+        }
+
+        // hunger...
+        hunger = setInterval(foodInterval, 1000);
+
+        function foodInterval() {
+          Htimer -= 1
+          if (Htimer == 0) {
+            localStorage.food = Number(localStorage.food)-localStorage.people;
+            Htimer = 10;
+
+            if (localStorage.food <= 0) {
+              localStorage.food = 0;
+              localStorage.people = Number(localStorage.people) - Number(localStorage.people)/4;
+              Htimer = 10;
+            }
+
+            if (localStorage.people == 1) {
+              localStorage.people = 0;
+            }
+          }
+          
+          document.getElementById("food").innerText = "Food: "+Math.floor(localStorage.food);
+          document.getElementById("people").innerText = "People: "+Math.floor(localStorage.people);
+        }
+
 
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
@@ -180,6 +264,8 @@ showVar();
               localStorage.iron = 0;
               localStorage.house = 0;
               localStorage.people = 0;
+              localStorage.food = 20;
+              localStorage.farm = 0;
 
               // show variables
               showVar();
