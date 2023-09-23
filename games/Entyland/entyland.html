@@ -2,10 +2,12 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://jcteam.pages.dev/games/Entyland/entyland.css">
+        <title>Entyland</title>
 
         <div style="text-align: center; font-family: sans-serif;">
         <img src="https://jcteam.pages.dev/games/Entyland/entyland.png" alt="logo">
-        <p>You are a brave soldier that must conquer the world of Entyland!</p>
+        <p>Note: If you are new to this game, go to Settings, and hit Reset!</p>
+        <p>You are a brave ruler that must conquer the world of Entyland!</p>
         <p>Start by buying some land!</p>
         <br>
         <hr>
@@ -28,15 +30,15 @@
             <img src="https://jcteam.pages.dev/games/Entyland/gold.png" alt="Gold" width="40" height="40">
             <p id="gold">Gold:</p>
             <pre>
-            <p>   </p>
-            </pre>
-            <img src="https://jcteam.pages.dev/games/Entyland/house.png" alt="House" width="40" height="40">
-            <p id="house">Houses:</p>
-            <pre>
               <p>   </p>
             </pre>
               <img src="https://jcteam.pages.dev/games/Entyland/people.png" alt="People" width="40" height="40">
               <p id="people">People:</p>
+              <pre>
+                <p>   </p>
+              </pre>
+                <img src="https://jcteam.pages.dev/games/Entyland/food.png" alt="Food" width="40" height="40">
+                <p id="food">Food:</p>
             </div>
             </div>
             <!--</div> -->
@@ -54,7 +56,7 @@
               <button class="tablinks" onclick="openTab(event, 'Shop')">💵Shop</button>
               <button class="tablinks" onclick="openTab(event, 'Build')">🛠️Build</button>
               <button class="tablinks" onclick="openTab(event, 'Inventory')">📂Inventory</button>
-              <button class="tablinks" onclick="openTab(event, 'Business')">💼Business</button>
+              <button class="tablinks" onclick="openTab(event, 'Town')">🏠Town</button>
               <button class="tablinks" onclick="openTab(event, 'Settings')">⚙️Settings</button>
               <button class="tablinks" onclick="openTab(event, 'Credits')">🏆Credits</button>
             </div>
@@ -66,7 +68,8 @@
   
             <div id="Build" class="tabcontent">
               <button onclick="Btoolkit()">Craft 5 Toolkits (Materials: Stone x10 + Wood x5)</button>
-              <button onclick="Bhouse()">Build House (Materials: Stone x40 + Wood x20)</button>
+              <button onclick="Bhouse()">Build House (Materials: Stone x30 + Wood x30)</button>
+              <button onclick="Bfarm()">Build Farm (Materials: Stone x10 + Wood x20)</button>
             </div>
             
             <div id="Inventory" class="tabcontent">
@@ -84,8 +87,9 @@
             </div>
             </div>
 
-            <div id="Business" class="tabcontent">
-              <p id="gpm">Gold per Second: 0</p>
+            <div id="Town" class="tabcontent">
+              <p id="house">Houses: </p>
+              <p id="farm">Farms: </p>
             </div>
   
             <div id="Settings" class="tabcontent">
@@ -98,13 +102,12 @@
               <p>boandme - Game tester</p>
             </div>
 
-        <!-- </div> -->
 
           <script src="https://jcteam.pages.dev/games/Entyland/entyland.js"></script>
 
           <footer>
             <div style="text-align: center;">
-            <p>Entyland© Alpha 2023</p>
+            <p>Entyland© 2023 v0.67</p>
             <p>Developed by Enty. Go subscribe to him <a href="https://www.youtube.com/channel/UC-0hejafjtYkCprTRt61w0A">here</a>!</p>
             <p>Ported to JCteam official website!</p>
             </div>
