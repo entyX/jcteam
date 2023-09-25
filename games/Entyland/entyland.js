@@ -29,7 +29,7 @@ showVar();
 
         function buyLand() {
             if (localStorage.land) {
-              if (localStorage.gold > 50) {
+              if (localStorage.gold >= 50) {
                 localStorage.land = Number(localStorage.land)+1;
                 localStorage.gold = Number(localStorage.gold)-50;
                 document.getElementById("news").innerText = "You conquered land and spent 50 gold on the border!";
