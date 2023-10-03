@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <body style="background-color: black; overflow: hidden; background-image: url('galaxy.jpg');">
+        <img id="atom" style="width:75px; position: absolute;" src="atom.png">
+        <img id="ufo" style="width: 75px; position: absolute; top: 10px; left: 10px; -webkit-transition: all 0.2s;" src="ufo.png">
+
+        <p id="scoreTB" style="position: absolute; color: white; font-family: Verdana, Geneva, Tahoma, sans-serif;">Score: 0</p>
+        <p id="timeTB" style="position: absolute; right: 50px; color: white; font-family: Verdana, Geneva, Tahoma, sans-serif;">Time: 0</p>
+    <script>
+        var score = 0, gameTime = 0, gameTimer, ufoX = 0, ufoY = 0, atomX = 0, atomY = 0;
+        var audio = new Audio('music.mp3')
+        audio.volume = 0.2;
+        var collect = new Audio('collect.mp3')
+        collect.volume = 1;
+
+        onkeydown = handleKeys;
+        onready = startUp();
+
+        function setLeft(id,x) {
+            document.getElementById(id).style.left = x + "px";
+        }
+        function setTop(id,y) {
+            document.getElementById(id).style.top = y + "px";
+        }
+        function randomNum(low,high) {
+            return(Math.floor(low + Math.random() * (1+high-low)));
+        }
+
+        function startUp() {
+            moveAtom();
+            gameTimer = window.setInterval(displayTime, 1000);
+        }
+
+        function displayTime() {
+            gameTime++;
+            document.getElementById("timeTB").innerText = "Time:" + gameTime;
+        }
+
+        function moveAtom() {
+            atomX = randomNum(2,14);
+            atomY = randomNum(2,12);
+            setLeft("atom", 50 * atomX);
+            setTop("atom", 50 * atomY);
+        }
+
+        function handleKeys(e) {
+            if (e.keyCode == 37) {ufoX--; audio.play();}
+            if (e.keyCode == 39) {ufoX++; audio.play();}
+            if (e.keyCode == 38) {ufoY--; audio.play();}
+            if (e.keyCode == 40) {ufoY++; audio.play();}
+            setLeft("ufo", 50 * ufoX);
+            setTop("ufo", 50 * ufoY);
+            hitAtom();
+        }
+
+        function hitAtom() {
+            if (ufoX == atomX) {
+                if (ufoY == atomY) {
+                score++;
+                document.getElementById("scoreTB").innerText = "Score:" + score;
+                collect.play();
+                moveAtom();
+                if (score == 10) {gameOver();}
+                }
+            }
+        }
+
+        function gameOver() {
+            clearInterval(gameTimer);
+            alert("Well done! Your time was: "+ gameTime);
+            location.reload();
+        }
+        
+        //https://i.ibb.co/J5G6vFY/favicon9.png
+    </script>
+    </body>
+</html>
