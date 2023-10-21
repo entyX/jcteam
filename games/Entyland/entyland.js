@@ -8,6 +8,14 @@ var Ftimer = 3;
 var hWarning = 0;
 var float = 0;
 
+// music
+var surface = new Audio('surface.mp3');
+var click = new Audio('click.wav');
+var fail = new Audio('fail.mp3');
+surface.volume = 0.5;
+click.volume = 1;
+fail.volume = 1;
+
 // function show variables
 function showVar() {
   document.getElementById("land").innerText = "Land (acres): "+localStorage.land;
@@ -33,9 +41,11 @@ showVar();
                 localStorage.land = Number(localStorage.land)+1;
                 localStorage.gold = Number(localStorage.gold)-50;
                 document.getElementById("news").innerText = "You conquered land and spent 50 gold on the border!";
+                click.play();
                 }
                 else {
                 document.getElementById("news").innerText = "You realized you didn't have enough gold...";
+                fail.play();
               }
             } else {
               localStorage.land = 1;
@@ -57,6 +67,7 @@ showVar();
                         localStorage.land = Number(localStorage.land)-1;
                         localStorage.cland = Number(localStorage.cland)+1;
                         localStorage.toolkit = Number(localStorage.toolkit)-1;
+                        click.play();
                         
                         // give the rewards!
                         randombiome = Math.floor(Math.random() * 2);
@@ -77,9 +88,11 @@ showVar();
 
                     } else {
                         document.getElementById("news").innerText = "You realized that you didn't have enough tools...";
+                        fail.play();
                     }
                 } else {
                     document.getElementById("news").innerText = "You realized that there was no more land to clear...";
+                    fail.play();
                 }
             } else {
                 localStorage.cland = 1;
@@ -104,12 +117,15 @@ showVar();
               document.getElementById("wood").innerText = "Wood: "+localStorage.wood;
               document.getElementById("stone").innerText = "Stone: "+localStorage.stone;
               document.getElementById("news").innerText = "You just crafted 5 toolkits for your settlement!";
+              click.play();
 
             } else {
               document.getElementById("news").innerText = "You sadly didn't have enough wood to craft toolkits...";
+              fail.play();
             }
           } else {
             document.getElementById("news").innerText = "You sadly didn't have enough stone to craft toolkits...";
+            fail.play();
           }
         }
 
@@ -126,15 +142,18 @@ showVar();
               document.getElementById("stone").innerText = "Stone: "+localStorage.stone;
               document.getElementById("cland").innerText = "Cleared Land (acres): "+localStorage.cland;
               document.getElementById("news").innerText = "You just built a house in your settlement!";
+              click.play();
 
               localStorage.people = Number(localStorage.people)+4;
               document.getElementById("people").innerText = "People: "+Math.floor(localStorage.people);
 
             } else {
               document.getElementById("news").innerText = "You sadly didn't have enough wood to build a house...";
+              fail.play();
             }
           } else {
             document.getElementById("news").innerText = "You sadly didn't have enough stone to build a house...";
+            fail.play();
           }
         }
 
@@ -152,12 +171,15 @@ showVar();
               document.getElementById("farm").innerText = "Farms: "+localStorage.farm;
               document.getElementById("cland").innerText = "Cleared Land (acres): "+localStorage.cland;
               document.getElementById("news").innerText = "You just built a farm in your settlement!";
+              click.play();
 
             } else {
               document.getElementById("news").innerText = "You sadly didn't have enough wood to build a farm...";
+              fail.play();
             }
           } else {
             document.getElementById("news").innerText = "You sadly didn't have enough stone to build a farm...";
+            fail.play();
           }
         }
 
@@ -218,6 +240,7 @@ showVar();
 
 
         function openTab(evt, tabName) {
+          surface.play();
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -231,12 +254,34 @@ showVar();
             evt.currentTarget.className += " active";
         }
 
+        // Slider
+        var music = document.getElementById("music");
+        var sfx = document.getElementById("sfx");
+        var musicDisplay = document.getElementById("musicDisplay");
+        var sfxDisplay = document.getElementById("sfxDisplay");
+
+        musicDisplay.innerHTML = music.value;
+        sfxDisplay.innerHTML = sfx.value;
+
+        music.oninput = function() {
+          musicDisplay.innerHTML = this.value;
+          surface.volume = this.value/100;
+        }
+        sfx.oninput = function() {
+          sfxDisplay.innerHTML = this.value;
+          click.volume = this.value/100;
+          fail.volume = this.value/100;
+        }
+        
+        // Set name
         function setName() {
           localStorage.settlement = document.getElementById("settlement").value;
           document.getElementById("settlement").value = localStorage.settlement;
           document.getElementById("news").innerText = "You renamed your settlement to "+localStorage.settlement;
+          click.play();
         }
 
+        // Reset Game
           function resetGame() {
             var destroy = prompt("Are you sure you want to reset your game? If yes, type 'delete' in the box below");
             if (destroy == "delete") {
