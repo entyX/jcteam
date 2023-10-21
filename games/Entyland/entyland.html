@@ -2,23 +2,28 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://jcteam.pages.dev/games/Entyland/entyland.css">
+        <link rel="icon" type="image/x-icon" href="https://jcteam.pages.dev/favicon.png">
+        <link href='https://fonts.googleapis.com/css?family=Pixelify+Sans' rel='stylesheet' type='text/css'>
+        <form action="https://jcteam.gitbook.io/entyland-official-guidebook/" >
+          <button class="button" role="button" type="submit" style="margin: 10px;">Need Help?</button>                           
+        </form>
         <title>Entyland</title>
-        <link rel="icon" type="image/x-icon" href="https://jcteam.pages.dev/games/Entyland/enty.png">
 
         <div style="text-align: center; font-family: sans-serif;">
-        <img src="https://jcteam.pages.dev/games/Entyland/entyland.png" alt="logo">
-        <p>Note: If you are new to this version of this game, go to Settings, and hit Reset!</p>
-        <p>You are a brave leader that must conquer the world of Entyland!</p>
-        <p>Start by buying some land!</p>
+        <img src="https://jcteam.pages.dev/games/Entyland/entyland4.png" alt="logo">
+        <b style="color: orange;">©</b>
         <br>
-        <hr>
+        <b>By Enty</b>
+        
+        <br>
+        <br>
         <br>
         </div>
     </head>
-    <body>
+    <body class="bg" onload="openTab(event, 'Help')">
         <div style="text-align: center;">
-            <input id="settlement" placeholder="Enter name of settlement">
-            <button onclick="setName()">Confirm</button>
+            <input type="text" class="rounded" id="settlement" placeholder="Enter name of settlement">
+            <button class="button" role="button" onclick="setName()">Confirm</button>
         </div>
         <p></p>
         <div class="row">
@@ -46,7 +51,7 @@
             
             <div style="background-color: lightgrey; width: 200px; border: 5px solid black; padding: 10px; margin: 0px;">
               <h3>News</h3>
-            <p id="news" style="color: red;">This is where news will take place!</p>
+            <p id="news" style="color: red; line-height: 20px;">This is where news will take place!</p>
             </div>
             </div>
 
@@ -54,23 +59,31 @@
             <p></p>
 
             <div class="tab" style="text-align: center;">
-              <button class="tablinks" onclick="openTab(event, 'Shop')">💵Shop</button>
-              <button class="tablinks" onclick="openTab(event, 'Build')">🛠️Build</button>
-              <button class="tablinks" onclick="openTab(event, 'Inventory')">📂Inventory</button>
-              <button class="tablinks" onclick="openTab(event, 'Town')">🏠Town</button>
-              <button class="tablinks" onclick="openTab(event, 'Settings')">⚙️Settings</button>
-              <button class="tablinks" onclick="openTab(event, 'Credits')">🏆Credits</button>
+              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Shop')">💵Shop</button>
+              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Build')">🛠️Build</button>
+              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Inventory')">📂Inventory</button>
+              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Town')">🏠Town</button>
+              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Settings')">⚙️Settings</button>
+              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Credits')">🏆Credits</button>
+            </div>
+
+            <div id="Help" class="tabcontent">
+              <div style="text-align: center;">
+                <p>Note: If you are new to this version of this game, go to Settings, and hit Reset!</p>
+                <p>You are a brave leader that must conquer the world of Entyland!</p>
+                <p>Start by buying some land!</p>
+              </div>
             </div>
 
             <div id="Shop" class="tabcontent">
-              <button onclick="buyLand()">Conquer Land (Cost: 50 gold)</button>
-              <button onclick="clearLand()">Clear Land (Cost: 1 toolkit)</button>
+              <button class="button" role="button" onclick="buyLand()">Conquer Land (Cost: 50 gold)</button>
+              <button class="button" role="button" onclick="clearLand()">Clear Land (Cost: 1 toolkit)</button>
             </div>
   
             <div id="Build" class="tabcontent">
-              <button onclick="Btoolkit()">Craft 5 Toolkits (Materials: Stone x10 + Wood x5)</button>
-              <button onclick="Bhouse()">Build House (Materials: Stone x30 + Wood x30)</button>
-              <button onclick="Bfarm()">Build Farm (Materials: Stone x10 + Wood x20)</button>
+              <button class="button" role="button" onclick="Btoolkit()">Craft 5 Toolkits (Materials: Stone x10 + Wood x5)</button>
+              <button class="button" role="button" onclick="Bhouse()">Build House (Materials: Stone x30 + Wood x30)</button>
+              <button class="button" role="button" onclick="Bfarm()">Build Farm (Materials: Stone x10 + Wood x20)</button>
             </div>
             
             <div id="Inventory" class="tabcontent">
@@ -94,24 +107,34 @@
             </div>
   
             <div id="Settings" class="tabcontent">
-              <button onclick="resetGame()">Reset Game</button>
+              <button class="button" role="button" onclick="resetGame()">Reset Game</button>
+              <pre>
+                <br>
+              </pre>
+
+              <div class="slidecontainer">
+                <input type="range" min="0" max="100" value="50" class="slider" id="music">
+                <p>Music: <span id="musicDisplay"></span></p>
+              </div>
+
+              <div class="slidecontainer">
+                <input type="range" min="0" max="100" value="100" class="slider" id="sfx">
+                <p>SFX: <span id="sfxDisplay"></span></p>
+              </div>
+
             </div>
 
             <div id="Credits" class="tabcontent">
-              <p>EntyXD - Game developer</p>
-              <p>Monke - Game tester and idea maker</p>
-              <p>boandme - Game tester</p>
+              <p><u>Entyland Version 1.0</u></p>
+              <p>Game Developer - EntyXD</p>
+              <p>Game Tester - Monke</p>
+              <p>Background Music - Dimrain47</p>
+              <p>Logo - Emulogic Font + Scratch Paint Editor</p>
+              <p>Font - Pixelify Sans (Stefie Justprince)</p>
+              <p>Background - Mr. Deyo</p>
+              <p>Button - Pintura</p>
             </div>
-
 
           <script src="https://jcteam.pages.dev/games/Entyland/entyland.js"></script>
-
-          <footer>
-            <div style="text-align: center;">
-            <p>Entyland© Alpha 2023</p>
-            <p>Developed by Enty. Go subscribe to him <a href="https://www.youtube.com/channel/UC-0hejafjtYkCprTRt61w0A">here</a>!</p>
-            <p>Ported to JCteam official website!</p>
-            </div>
-          </footer>
     </body>
 </html>
