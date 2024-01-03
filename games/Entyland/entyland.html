@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://jcteam.pages.dev/games/Entyland/entyland.css">
-        <link rel="icon" type="image/x-icon" href="https://jcteam.pages.dev/favicon.png">
+        <link rel="icon" type="image/x-icon" href="https://jcteam.pages.dev/games/Entyland/enty.png">
         <link href='https://fonts.googleapis.com/css?family=Pixelify+Sans' rel='stylesheet' type='text/css'>
         <form action="https://jcteam.gitbook.io/entyland-official-guidebook/" >
           <button class="button" role="button" type="submit" style="margin: 10px;">Need Help?</button>                           
@@ -61,6 +62,7 @@
             <div class="tab" style="text-align: center;">
               <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Shop')">💵Shop</button>
               <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Build')">🛠️Build</button>
+              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Craft')">🪓Craft</button>
               <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Inventory')">📂Inventory</button>
               <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Town')">🏠Town</button>
               <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Settings')">⚙️Settings</button>
@@ -81,9 +83,17 @@
             </div>
   
             <div id="Build" class="tabcontent">
-              <button class="button" role="button" onclick="Btoolkit()">Craft 5 Toolkits (Materials: Stone x10 + Wood x5)</button>
-              <button class="button" role="button" onclick="Bhouse()">Build House (Materials: Stone x30 + Wood x30)</button>
+              <button class="button" role="button" onclick="Bhouse1()">Build Tier 1 House (Materials: Stone x30 + Wood x30)</button>
+              <button class="button" role="button" onclick="Bhouse2()">Build Tier 2 House (Materials: Wood x30 + Sandstone x30 + Glass x20)</button>
               <button class="button" role="button" onclick="Bfarm()">Build Farm (Materials: Stone x10 + Wood x20)</button>
+              <button class="button" role="button" onclick="Bfurnace()">Build Furnace (Materials: Stone x20)</button>
+            </div>
+
+            <div id="Craft" class="tabcontent">
+              <button class="button" role="button" onclick="Btoolkit()">Craft 5 Toolkits (Materials: Stone x10 + Wood x5)</button>
+              <button class="button" role="button" onclick="furnaceSettings()">Turn on/off Furnace</button>
+              <button class="button" role="button" onclick="Csandstone()">Craft Sandstone (Materials: Sand x5)</button>
+              <p id="furnaceactivate">The furnace is off right now.</p>
             </div>
             
             <div id="Inventory" class="tabcontent">
@@ -93,21 +103,28 @@
               <p id="cland">Cleared Land (acres): 0</p>
               <p id="toolkit">Toolkit: 5</p>
               <p id="wood">Wood: 0</p>
-              </div>
-              <div class="column">
                 <p id="stone">Stone: 0</p>
                 <p id="iron">Iron: 0</p>
+                <p id="sand">Sand: 0</p>
+                <p id="cactus">Cactus: 0</p>
+              </div>
+              <div class="column">
+                <p id="glass">Glass: 0</p>
+                <p id="sandstone">Sandstone: 0</p>
               </div>
             </div>
             </div>
 
             <div id="Town" class="tabcontent">
-              <p id="house">Houses: </p>
+              <p id="house1">Tier 1 Houses: </p>
+              <p id="house2">Tier 2 Houses: </p>
               <p id="farm">Farms: </p>
+              <p id="furnace">Furnaces: </p>
             </div>
   
             <div id="Settings" class="tabcontent">
               <button class="button" role="button" onclick="resetGame()">Reset Game</button>
+              <button class="button" role="button" onclick="changeMusic()">Change Music!</button>
               <pre>
                 <br>
               </pre>
