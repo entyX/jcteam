@@ -20,7 +20,7 @@ music1.volume = 0.5;
 music2.volume = 0.5;
 click.volume = 1;
 fail.volume = 1;
-var setmusic = 2;
+var setmusic = 1;
 
 // function show variables
 function showVar() {
