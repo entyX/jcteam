@@ -12,10 +12,10 @@ var hWarning = 0;
 var smeltTimer = 5;
 
 // music
-var music1 = new Audio('music1.mp3');
-var music2 = new Audio('music2.mp3');
-var click = new Audio('click.wav');
-var fail = new Audio('fail.mp3');
+var music1 = new Audio('https://jcteam.pages.dev/games/Entyland/music1.mp3');
+var music2 = new Audio('https://jcteam.pages.dev/games/Entyland/music2.mp3');
+var click = new Audio('https://jcteam.pages.dev/games/Entyland/click.wav');
+var fail = new Audio('https://jcteam.pages.dev/games/Entyland/fail.mp3');
 music1.volume = 0.5;
 music2.volume = 0.5;
 click.volume = 1;
