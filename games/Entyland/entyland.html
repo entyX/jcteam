@@ -58,13 +58,13 @@
 
             <!-- <div class="row"> -->
             <p></p>
-
+            
             <div class="tab" style="text-align: center;">
               <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Shop')">💵Shop</button>
-              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Build')">🛠️Build</button>
-              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Craft')">🪓Craft</button>
-              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Inventory')">📂Inventory</button>
+              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Build')">🛠️Build + Craft</button>
               <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Town')">🏠Town</button>
+              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Chests')">🗝️Chests</button>
+              <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Military')">⚔️Military</button>
               <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Settings')">⚙️Settings</button>
               <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="tablinks" onclick="openTab(event, 'Credits')">🏆Credits</button>
             </div>
@@ -83,36 +83,55 @@
             </div>
   
             <div id="Build" class="tabcontent">
+              
+              <div class="row">
+              <div class="column">
+              <div class="scroll-container">
+              <b>Craft</b>
+              <pre></pre>
+              <button class="button" role="button" onclick="Btoolkit()">Craft 5 Toolkits (Materials: Stone x10 + Wood x5)</button>
+              <button class="button" role="button" onclick="furnaceSettings()">Turn on/off Furnace</button>
+              <button class="button" role="button" onclick="Csandstone()">Craft Sandstone (Materials: Sand x5)</button>
+              <pre></pre>
+              <b>Build</b>
+              <pre></pre>
               <button class="button" role="button" onclick="Bhouse1()">Build Tier 1 House (Materials: Stone x30 + Wood x30)</button>
               <button class="button" role="button" onclick="Bhouse2()">Build Tier 2 House (Materials: Wood x30 + Sandstone x30 + Glass x20)</button>
               <button class="button" role="button" onclick="Bfarm()">Build Farm (Materials: Stone x10 + Wood x20)</button>
               <button class="button" role="button" onclick="Bfurnace()">Build Furnace (Materials: Stone x20)</button>
-            </div>
+              <pre></pre>
+              <b>Armor + Weapons</b>
+              <pre></pre>
+              <button class="button" role="button" onclick="CAspikearmor()">Craft Spiked Armor (Materials: Cactus: x50)</button>
+              </div>
+              </div>
+              <div class="column">
+                <div class="scroll-container">
+                  <div class="row">
+                  <div class="column">
+                  <b>General: </b>
+                  <p id="land">Land (acres): 0</p>
+                  <p id="cland">Cleared Land (acres): 0</p>
+                  <p id="toolkit" class="toolkit">Toolkits: 5</p>
 
-            <div id="Craft" class="tabcontent">
-              <button class="button" role="button" onclick="Btoolkit()">Craft 5 Toolkits (Materials: Stone x10 + Wood x5)</button>
-              <button class="button" role="button" onclick="furnaceSettings()">Turn on/off Furnace</button>
-              <button class="button" role="button" onclick="Csandstone()">Craft Sandstone (Materials: Sand x5)</button>
-              <p id="furnaceactivate">The furnace is off right now.</p>
-            </div>
-            
-            <div id="Inventory" class="tabcontent">
-              <div class="row">
-              <div class="column">
-              <p id="land">Land (acres): 0</p>
-              <p id="cland">Cleared Land (acres): 0</p>
-              <p id="toolkit">Toolkit: 5</p>
-              <p id="wood">Wood: 0</p>
-                <p id="stone">Stone: 0</p>
-                <p id="iron">Iron: 0</p>
-                <p id="sand">Sand: 0</p>
-                <p id="cactus">Cactus: 0</p>
+                  <b>Forest + Mountains: </b>
+                  <p id="wood">Wood: 0</p>
+                  <p id="stone">Stone: 0</p>
+                  <p id="iron">Iron: 0</p>
+
+                  <b>Desert: </b>
+                  <p id="sand">Sand: 0</p>
+                  <p id="cactus">Cactus: 0</p>
+                  </div>
+                  <div class="column">
+                  <b>(desert continued)</b>
+                  <p id="glass">Glass: 0</p>
+                  <p id="sandstone">Sandstone: 0</p>
+                  </div>
+                  </div>
+                </div>
               </div>
-              <div class="column">
-                <p id="glass">Glass: 0</p>
-                <p id="sandstone">Sandstone: 0</p>
               </div>
-            </div>
             </div>
 
             <div id="Town" class="tabcontent">
@@ -120,6 +139,27 @@
               <p id="house2">Tier 2 Houses: </p>
               <p id="farm">Farms: </p>
               <p id="furnace">Furnaces: </p>
+            </div>
+
+            <div id="Chests" class="tabcontent">
+              <button class="button" role="button" onclick="dailyChest()" id="daily">Open Daily Chest!</button>
+              <p id="dailychest">Next daily chest in 5 minutes, come back later to open it!</p>
+              <!-- The Modal -->
+              <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p id="woodRewards">You got 0 Wood!</p>
+                  <p id="stoneRewards">You got 0 Stone!</p>
+                  <p id="toolRewards">You got 0 Toolkits!</p>
+                </div>
+
+              </div>
+            </div>
+
+            <div id="Military" class="tabcontent">
+              <p id="armor">Military Armor: None</p>
             </div>
   
             <div id="Settings" class="tabcontent">
@@ -144,7 +184,7 @@
             <div id="Credits" class="tabcontent">
               <p><u>Entyland Version 1.0</u></p>
               <p>Game Developer - EntyXD</p>
-              <p>Game Tester - Monke</p>
+              <p>Game Tester - Monke, Boandme, and BoyTiger_1</p>
               <p>Background Music - Dimrain47</p>
               <p>Logo - Emulogic Font + Scratch Paint Editor</p>
               <p>Font - Pixelify Sans (Stefie Justprince)</p>
