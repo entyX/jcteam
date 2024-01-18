@@ -3,6 +3,10 @@ var randombiome = 0;
 var randomNum = 0;
 var ranInt = 0;
 var float = 0;
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("daily");
+var span = document.getElementsByClassName("close")[0];
+var randomReward = 0;
 
 // timers
 var seconds = 1;
@@ -12,10 +16,10 @@ var hWarning = 0;
 var smeltTimer = 5;
 
 // music
-var music1 = new Audio('https://jcteam.pages.dev/games/Entyland/music1.mp3');
-var music2 = new Audio('https://jcteam.pages.dev/games/Entyland/music2.mp3');
-var click = new Audio('https://jcteam.pages.dev/games/Entyland/click.wav');
-var fail = new Audio('https://jcteam.pages.dev/games/Entyland/fail.mp3');
+var music1 = new Audio('music1.mp3');
+var music2 = new Audio('music2.mp3');
+var click = new Audio('click.wav');
+var fail = new Audio('fail.mp3');
 music1.volume = 0.5;
 music2.volume = 0.5;
 click.volume = 1;
@@ -35,9 +39,12 @@ function showVar() {
 
   // items
   document.getElementById("gold").innerText = "Gold: "+Math.floor(localStorage.gold);
-  document.getElementById("toolkit").innerText = "Toolkit: "+localStorage.toolkit;
+  document.getElementById("toolkit").innerText = "Toolkits: "+localStorage.toolkit;
   document.getElementById("people").innerText = "People: "+Math.floor(localStorage.people);
   document.getElementById("food").innerText = "Food: "+Math.floor(localStorage.food);
+
+  // Armor + Weapons
+  document.getElementById("armor").innerText = "Military Armor: "+localStorage.armor;
   
   // resources
   document.getElementById("wood").innerText = "Wood: "+localStorage.wood;
@@ -46,8 +53,10 @@ function showVar() {
   document.getElementById("sand").innerText = "Sand: "+localStorage.sand;
   document.getElementById("cactus").innerText = "Cactus: "+localStorage.cactus;
   document.getElementById("glass").innerText = "Glass: "+localStorage.glass;
-  document.getElementById("furnaceactivate").innerText = localStorage.furnaceOn;
-  document.getElementById("sandstone").innerText = localStorage.sandstone;
+  document.getElementById("sandstone").innerText = "Sandstone: "+localStorage.sandstone;
+
+  // extra
+  //document.getElementById("dailychest").innerText = "Next Daily Chest in: "+localStorage.claim;
   
 }
 
@@ -91,13 +100,13 @@ showVar();
                         // give the rewards!
                         randombiome = Math.floor(Math.random() * 3);
                         if (randombiome == 0) {
-                            localStorage.wood = Number(localStorage.wood)+Math.floor(Math.random() * (21 - 15)) + 15;
-                            localStorage.stone = Number(localStorage.stone)+Math.floor(Math.random() * (5 - 2)) + 2;
+                            localStorage.wood = Number(localStorage.wood)+Math.floor(Math.random() * (25 - 18)) + 18;
+                            localStorage.stone = Number(localStorage.stone)+Math.floor(Math.random() * (12 - 6)) + 6;
                             document.getElementById("news").innerText = "You identified that your land was a Forest! You cleared it!";
                         }
 
                         if (randombiome == 1) {
-                            localStorage.stone = Number(localStorage.stone)+Math.floor(Math.random() * (21 - 15)) + 15;
+                            localStorage.stone = Number(localStorage.stone)+Math.floor(Math.random() * (25 - 18)) + 18;
                             randomNum = Math.floor(Math.random() * 5);
                             if (randomNum == 4) {
                                 localStorage.iron = Number(localStorage.wood)+Math.floor(Math.random() * (4 - 1)) + 1;
@@ -108,7 +117,23 @@ showVar();
                         if (randombiome == 2) {
                           localStorage.sand = Number(localStorage.sand)+Math.floor(Math.random() * (21 - 15)) + 15;
                           localStorage.cactus = Number(localStorage.cactus)+Math.floor(Math.random() * (5 - 2)) + 2;
-                          document.getElementById("news").innerText = "You identified that your land was a Desert! You cleared it!";
+                          randomNum = Math.floor(Math.random() * (4 - 1)) + 1;
+  
+                          if (randomNum == 4) {
+                            document.getElementById("news").innerText = "You identified that your land was a Desert! You cleared it! Also, a vulture came and ate some of your people...";
+                              localStorage.people -= Math.floor(Math.random() * (4-2)) + 2;
+                              if (localStorage.people < 0) {
+                                localStorage.people = 0;
+                              }
+                          } else if (randomNum == 3) {
+                            document.getElementById("news").innerText = "You identified that your land was a Desert! You cleared it! Also, a scorpion came and ate some of your food...";
+                            localStorage.food -= Math.floor(Math.random() * (6-4)) + 4;
+                              if (localStorage.food < 0) {
+                                localStorage.food = 0;
+                              }
+                          } else {
+                            document.getElementById("news").innerText = "You identified that your land was a Desert! You cleared it!";
+                          }
                         } 
 
                     } else {
@@ -124,12 +149,13 @@ showVar();
             }
             document.getElementById("land").innerText = "Land (acres): "+localStorage.land;
             document.getElementById("cland").innerText = "Cleared Land (acres): "+localStorage.cland;
-            document.getElementById("toolkit").innerText = "Toolkit: "+localStorage.toolkit;
+            document.getElementsByClassName("toolkit").innerText = "Toolkits: "+localStorage.toolkit;
             document.getElementById("wood").innerText = "Wood: "+localStorage.wood;
             document.getElementById("stone").innerText = "Stone: "+localStorage.stone;
             document.getElementById("iron").innerText = "Iron: "+localStorage.iron;
             document.getElementById("sand").innerText = "Sand: "+localStorage.sand;
             document.getElementById("cactus").innerText = "Cactus: "+localStorage.cactus;
+            document.getElementById("people").innerText = "People: "+localStorage.people;
         }
 
         //build functions
@@ -140,7 +166,7 @@ showVar();
               localStorage.wood = Number(localStorage.wood)-5;
               localStorage.toolkit = Number(localStorage.toolkit)+5;
 
-              document.getElementById("toolkit").innerText = "Toolkit: "+localStorage.toolkit;
+              document.getElementById("toolkit").innerText = "Toolkits: "+localStorage.toolkit;
               document.getElementById("wood").innerText = "Wood: "+localStorage.wood;
               document.getElementById("stone").innerText = "Stone: "+localStorage.stone;
               document.getElementById("news").innerText = "You just crafted 5 toolkits for your settlement!";
@@ -280,7 +306,6 @@ showVar();
             document.getElementById("news").innerText = "You don't have a furnace...";
             fail.play();
           }
-          document.getElementById("furnaceactivate").innerText = localStorage.furnaceOn;
         }
 
 
@@ -293,6 +318,27 @@ showVar();
             click.play();
           } else {
             document.getElementById("news").innerText = "You don't have enough sand to craft sandstone...";
+            fail.play();
+          }
+        }
+
+        // Craft Armor
+
+        // Spiked Armor
+        function CAspikearmor() {
+          if (localStorage.cactus >= 50) {
+            if (localStorage.armor != "Spiked Armor") {
+              localStorage.cactus = Number(localStorage.sand) - 50;
+              localStorage.armor = "Spiked Armor";
+              document.getElementById("cactus").innerText = "Cactus: "+localStorage.cactus;
+              document.getElementById("armor").innerText = "Military Armor: "+localStorage.armor;
+              click.play();
+            } else {
+              document.getElementById("news").innerText = "You have already bought Spiked Armor...";
+              fail.play();
+            }
+          } else {
+            document.getElementById("news").innerText = "You don't have enough cactus to craft it...";
             fail.play();
           }
         }
@@ -333,9 +379,11 @@ showVar();
 
         function smeltInterval() {
           if (localStorage.furnaceOn == 1) {
-            localStorage.sand = Number(localStorage.sand) - 1;
-            localStorage.wood = Number(localStorage.wood) - 1;
-            localStorage.glass = Number(localStorage.glass) + 1;
+            if (localStorage.wood > 0) {
+            localStorage.sand = Number(localStorage.sand) - localStorage.furnace;
+            localStorage.wood = Number(localStorage.wood) - localStorage.furnace;
+            localStorage.glass = Number(localStorage.glass) + localStorage.furnace;
+            }
           }
           document.getElementById("sand").innerText = "Sand: "+localStorage.sand;
           document.getElementById("wood").innerText = "Wood: "+localStorage.wood;
@@ -432,30 +480,79 @@ showVar();
           }
         }
 
+        // Daily Chest
+        function dailyChest() {
+          if (localStorage.claim == 1) {
+            randomReward = Math.floor(Math.random() * (20 - 10)) + 10;
+            localStorage.wood = Number(localStorage.wood) + randomReward;
+            document.getElementById("woodRewards").innerText = "You got "+randomReward+" wood!"
+            randomReward = Math.floor(Math.random() * (20 - 10)) + 10;
+            localStorage.stone = Number(localStorage.stone) + randomReward;
+            document.getElementById("stoneRewards").innerText = "You got "+randomReward+" stone!"
+            randomReward = Math.floor(Math.random() * (10 - 5)) + 5;
+            localStorage.toolkit = Number(localStorage.toolkit) + randomReward;
+            document.getElementById("toolRewards").innerText = "You got "+randomReward+" toolkits!"
+            localStorage.claim = 0;
+            document.getElementById("dailychest").innerText = "Next daily chest in 5 minutes, come back later to open it";
+            document.getElementById("wood").innerText = "Wood: "+localStorage.wood;
+            document.getElementById("stone").innerText = "Stone: "+localStorage.stone;
+            document.getElementById("toolkit").innerText = "Toolkits: "+localStorage.toolkit;
+            modal.style.display = "block";
+          }
+        }
+        
+        if (localStorage.claim == 0) {
+          localStorage.dailychest = setInterval(chestInterval, 300000);
+          
+        }
+
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        function chestInterval() {
+          localStorage.claim = 1;
+          document.getElementById("dailychest").innerText = "Your daily chest is ready! Come and open it!";
+        }
+
         // Reset Game
           function resetGame() {
             var destroy = prompt("Are you sure you want to reset your game? If yes, type 'delete' in the box below");
             if (destroy == "delete") {
               // reset variables
+
+              // General
               localStorage.gold = 500;
-              localStorage.land = 0;
-              localStorage.cland = 0;
               localStorage.toolkit = 5;
-              localStorage.settlement = "";
-              localStorage.wood = 0;
-              localStorage.stone = 0;
-              localStorage.iron = 0;
-              localStorage.sand = 0;
-              localStorage.cactus = 0;
-              localStorage.house1 = 0;
-              localStorage.house2 = 0;
-              localStorage.people = 0;
               localStorage.food = 20;
               localStorage.farm = 0;
               localStorage.furnace = 0;
+
+              // Housing
+              localStorage.land = 0;
+              localStorage.cland = 0;
+              localStorage.settlement = "";
+              localStorage.house1 = 0;
+              localStorage.house2 = 0;
+              localStorage.people = 0;
+              
+              // Forest + Mountain Resources
+              localStorage.wood = 0;
+              localStorage.stone = 0;
+              localStorage.iron = 0;
+
+              // Desert Resources
+              localStorage.sand = 0;
+              localStorage.cactus = 0;
               localStorage.glass = 0;
-              localStorage.furnaceOn = 2;
               localStorage.sandstone = 0;
+
+              // UI
+              localStorage.furnaceOn = 2;
+              localStorage.claim = 1;
+              localStorage.dailychest = 300000;
+              document.getElementById("dailychest").innerText = "Your daily chest is ready! Come and open it!";
+              localStorage.armor = "None";
 
               // show variables
               showVar();
