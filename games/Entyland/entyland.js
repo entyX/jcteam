@@ -117,17 +117,17 @@ showVar();
                         if (randombiome == 2) {
                           localStorage.sand = Number(localStorage.sand)+Math.floor(Math.random() * (21 - 15)) + 15;
                           localStorage.cactus = Number(localStorage.cactus)+Math.floor(Math.random() * (5 - 2)) + 2;
-                          randomNum = Math.floor(Math.random() * (4 - 1)) + 1;
+                          randomNum = Math.floor(Math.random() * 4);
   
-                          if (randomNum == 4) {
+                          if (randomNum == 0) {
                             document.getElementById("news").innerText = "You identified that your land was a Desert! You cleared it! Also, a vulture came and ate some of your people...";
-                              localStorage.people -= Math.floor(Math.random() * (4-2)) + 2;
+                              localStorage.people -= Math.floor((Math.floor(Math.random() * (4-2)) + 2)/localStorage.prot);
                               if (localStorage.people < 0) {
                                 localStorage.people = 0;
                               }
-                          } else if (randomNum == 3) {
+                          } else if (randomNum == 1) {
                             document.getElementById("news").innerText = "You identified that your land was a Desert! You cleared it! Also, a scorpion came and ate some of your food...";
-                            localStorage.food -= Math.floor(Math.random() * (6-4)) + 4;
+                            localStorage.food -= Math.floor((Math.floor(Math.random() * (6-4)) + 4)/localStorage.prot);
                               if (localStorage.food < 0) {
                                 localStorage.food = 0;
                               }
@@ -330,6 +330,7 @@ showVar();
             if (localStorage.armor != "Spiked Armor") {
               localStorage.cactus = Number(localStorage.sand) - 50;
               localStorage.armor = "Spiked Armor";
+              localStorage.prot = 2;
               document.getElementById("cactus").innerText = "Cactus: "+localStorage.cactus;
               document.getElementById("armor").innerText = "Military Armor: "+localStorage.armor;
               click.play();
@@ -380,9 +381,11 @@ showVar();
         function smeltInterval() {
           if (localStorage.furnaceOn == 1) {
             if (localStorage.wood > 0) {
-            localStorage.sand = Number(localStorage.sand) - localStorage.furnace;
-            localStorage.wood = Number(localStorage.wood) - localStorage.furnace;
-            localStorage.glass = Number(localStorage.glass) + localStorage.furnace;
+              if (localStorage.sand > 0) {
+                localStorage.sand = Number(localStorage.sand) - Number(localStorage.furnace);
+                localStorage.wood = Number(localStorage.wood) - Number(localStorage.furnace);
+                localStorage.glass = Number(localStorage.glass) + Number(localStorage.furnace);
+              }
             }
           }
           document.getElementById("sand").innerText = "Sand: "+localStorage.sand;
@@ -510,6 +513,12 @@ showVar();
           modal.style.display = "none";
         }
 
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+
         function chestInterval() {
           localStorage.claim = 1;
           document.getElementById("dailychest").innerText = "Your daily chest is ready! Come and open it!";
@@ -553,6 +562,7 @@ showVar();
               localStorage.dailychest = 300000;
               document.getElementById("dailychest").innerText = "Your daily chest is ready! Come and open it!";
               localStorage.armor = "None";
+              localStorage.prot = 1;
 
               // show variables
               showVar();
