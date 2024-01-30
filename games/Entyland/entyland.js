@@ -496,7 +496,7 @@ showVar();
             localStorage.toolkit = Number(localStorage.toolkit) + randomReward;
             document.getElementById("toolRewards").innerText = "You got "+randomReward+" toolkits!"
             localStorage.claim = 0;
-            document.getElementById("dailychest").innerText = "Next daily chest in 5 minutes, come back later to open it";
+            document.getElementById("dailychest").innerText = "You have claimed your chest already!";
             document.getElementById("wood").innerText = "Wood: "+localStorage.wood;
             document.getElementById("stone").innerText = "Stone: "+localStorage.stone;
             document.getElementById("toolkit").innerText = "Toolkits: "+localStorage.toolkit;
@@ -521,7 +521,7 @@ showVar();
 
         function chestInterval() {
           localStorage.claim = 1;
-          document.getElementById("dailychest").innerText = "Your daily chest is ready! Come and open it!";
+          document.getElementById("dailychest").innerText = "Your starter chest is ready! Come and open it!";
         }
 
         // Reset Game
@@ -560,7 +560,7 @@ showVar();
               localStorage.furnaceOn = 2;
               localStorage.claim = 1;
               localStorage.dailychest = 300000;
-              document.getElementById("dailychest").innerText = "Your daily chest is ready! Come and open it!";
+              document.getElementById("dailychest").innerText = "Your starter chest is ready! Come and open it!";
               localStorage.armor = "None";
               localStorage.prot = 1;
 
