@@ -4,7 +4,7 @@
         <title>JC - Javascript Breakout</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/x-icon" href="favicon.png">
-        <link rel="stylesheet" href="websitecss.css">
+        <link rel="stylesheet" href="https://jcteam.pages.dev/websitecss.css">
         <link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
     </head>
     <body>
@@ -23,30 +23,33 @@
               </div>
             </div>
         </header>
-<script>
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-var ballRadius = 10;
-var x = canvas.width/2;
-var y = canvas.height-30;
-var dx = 2;
-var dy = -2;
-var paddleHeight = 10;
-var paddleWidth = 75;
-var paddleX = (canvas.width-paddleWidth)/2;
-var rightPressed = false;
-var leftPressed = false;
-var brickRowCount = 5;
-var brickColumnCount = 3;
-var brickWidth = 75;
-var brickHeight = 20;
-var brickPadding = 10;
-var brickOffsetTop = 30;
-var brickOffsetLeft = 30;
-var score = 0;
-var lives = 3;
+        
+        <canvas id="myCanvas" width="480" height="320" style="border:1px solid #000;"></canvas>
+        
+        <script>
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            var ballRadius = 10;
+            var x = canvas.width/2;
+            var y = canvas.height-30;
+            var dx = 2;
+            var dy = -2;
+            var paddleHeight = 10;
+            var paddleWidth = 75;
+            var paddleX = (canvas.width-paddleWidth)/2;
+            var rightPressed = false;
+            var leftPressed = false;
+            var brickRowCount = 5;
+            var brickColumnCount = 3;
+            var brickWidth = 75;
+            var brickHeight = 20;
+            var brickPadding = 10;
+            var brickOffsetTop = 30;
+            var brickOffsetLeft = 30;
+            var score = 0;
+            var lives = 3;
 
-var bricks = [];
+            var bricks = [];
 for(var c=0; c<brickColumnCount; c++) {
   bricks[c] = [];
   for(var r=0; r<brickRowCount; r++) {
@@ -191,9 +194,11 @@ function draw() {
 }
 
 draw();
-</script>
-<h3 style="font-family:courier; text-align:center;">Instructions:</h3>
-<p style="font-family:courier; text-align:center;">Use Left and Right arrow keys to move the paddle. You can also use mouse. Hit the ball towards all bricks to win.</p>
+
+        </script>
+        
+        <h3 style="font-family:courier; text-align:center;">Instructions:</h3>
+        <p style="font-family:courier; text-align:center;">Use Left and Right arrow keys to move the paddle. You can also use mouse. Hit the ball towards all bricks to win.</p>
   
-  </body>
+    </body>
 </html>
