@@ -1,189 +1,165 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>JC - Games</title>
-  <link rel="icon" type="image/x-icon" href="favicon.png">
-<style>
-header {
-  background-color: #666;
-  padding: 0.5px;
-  text-align: center;
-  font-size: 35px;
-  color: white;
-  font-family: sans-serif;
-}
-  
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #404040;
-}
+    <head>
+        <title>JC - News</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+        <link rel="stylesheet" href="websitecss.css">
+        <link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+    </head>
+    <body>
+        <header>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a class="active" href="games.html">Games</a></li>
+              <li><a href="news.html">News</a></li>
+              <li><a href="forum.html">Discussion</a></li>
+              <li><a href="about.html">About Us</a></li>
+            </ul>
+            <div class="container">
+              <img src="HomeImages/banner.png" alt="Banner" style="filter: brightness(0.8); width: 105%;">
+              <div class="centered">
+                <h1>Games</h1>
+              </div>
+            </div>
+        </header>
 
-li {
-  float: left;
-}
+        <div style="text-align: center;">
+            <p style="font-size: 24px;">Javascript Games</p>
+        </div>
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 10px 16px;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-size: 20px
-}
+        <div class="row">
 
-li a:hover:not(.active) {
-  background-color: #111;
-}
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav1.png" style="width: 200px; height: 200px">
+                <form action="games/javascript-breakout.html" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Javascript Breakout</button>                           
+                </form>
+            </div>
 
-.active {
-  background-color: #7CB9E8;
-}
-button {
-                    	
-                    	display: inline-block;
-                    	outline: 0;
-                    	cursor: pointer;
-                    	padding: 5px 16px;
-                    	font-size: 14px;
-                    	font-weight: 500;
-                    	line-height: 20px;
-                    	vertical-align: middle;
-                    	border: 1px solid;
-                    	border-radius: 6px;
-                    	color: #0366d6;
-                    	background-color: #fafbfc;
-                    	border-color: #1b1f2326;
-                    	box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px, 										        
-                      rgba(255, 255, 255, 0.25) 0px 1px 0px 0px inset;
-                    	transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-                    	transition-property: color, background-color, 												        
-                      border-color;
-                    }
-                    button:hover {
-                        color: #ffffff;
-                        background-color: #0366d6;
-                        border-color: #1b1f2326;
-                        box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px, rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
-                        transition-duration: 0.1s;
-                    }
-  * {
-  box-sizing: border-box;
-}
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav7.png" style="width: 200px; height: 200px">
+                <form action="games/javascript-breakout-2.html" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Javascript Breakout 2</button>                           
+                </form>
+            </div>
 
-.column {
-  float: left;
-  width: 20%;
-  padding: 5px;
-}
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav2.png" style="width: 200px; height: 200px">
+                <form action="games/tictactoe.html" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Tic Tac Toe</button>                           
+                </form>
+            </div>
 
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-  
-</style>
-</head>
-<body>
-<header>
-  <h1>Games</h1>
-  <p> You're at the right place if your looking for games</p>
-<ul>
-  <li><a href="index.html">Home</a></li>
-  <li><a class="active" href="games.html">Games</a></li>
-  <li><a href="news.html">News</a></li>
-  <li><a href="forum.html">Discussion</a></li>
-</ul>
-  </header>
-  
-    <h2 style="font-family: sans-serif; text-align: center;"><u>Javascript Games:</u><h2>
-  
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav4.png" style="width: 200px; height: 200px">
+                <form action="games/balloon-popper" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Balloon Popper</button>                           
+                </form>
+            </div>
 
-  <div class="row">
-    
-  <div class="column" style="text-align: center;">
-    <img src="https://i.ibb.co/Jn4kYwG/favicon1.png" alt="JavascriptBreakout" style="width: 200px; height: 200px">
-    <form action="games/javascript-breakout.html" >
-  <button type="submit">Javascript Breakout</button>                           
-  </form>
-  </div>
-  
-  <div class="column" style="text-align: center;">
-    <img src="https://i.ibb.co/GpMLjVP/favicon2.png" alt="TicTacToe" style="width: 200px; height: 200px">
-    <form action="games/tictactoe/tictactoe.html" >
-  <button type="submit">TicTacToe</button>                      
-  </form>
-  </div>
-    
-  <div class="column" style="text-align: center;">
-    <img src="https://i.ibb.co/fXN84WK/favicon3.png" alt="NarutoRun" style="width: 200px; height: 200px">
-    <form action="games/NarutoSnakes/narutorun.html" >
-  <button type="submit">Naruto Run</button>                      
-  </form>
-  </div>
-    
-  <div class="column" style="text-align: center;">
-    <img src="https://i.ibb.co/v4CyyrB/favicon4.png" alt="BalloonPopper" style="width: 200px; height: 200px;">
-    <form action="games/BalloonPopper/balloonpopperfull.html">
-  <button type="submit">Balloon Popper</button>                      
-  </form>
-  </div>
-   
-   <div class="column" style="text-align: center;">
-    <img src="https://i.ibb.co/tppJN5k/favicon7.png" alt="JavascriptBreakout2" style="width: 200px; height: 200px;">
-    <form action="games/javascriptbreakout2.html">
-  <button type="submit">Javascript Breakout 2</button>                      
-  </form>
-  </div>
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav9.png" style="width: 200px; height: 200px">
+                <form action="games/energy-rush.html" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Energy Rush</button>                           
+                </form>
+            </div>
 
-    <div class="column" style="text-align: center;">
-    <img src="https://i.ibb.co/J5G6vFY/favicon9.png" alt="ComingSoon" style="width: 200px; height: 200px;">
-    <form action="https://jcteam.pages.dev/games/Energy%20Rush/Energy%20Rush">
-  <button type="submit">Energy Rush</button>                      
-  </form>
-  </div>
-    
-</div>
-    
-<h2 style="font-family: sans-serif; text-align: center;"><u>Python Games:</u><h2>
+        </div>
 
-<div class="row">
-  
-  <div class="column" style="text-align: center;">
-  <img src="https://i.ibb.co/7jrsL8B/favicon5.png" alt="CaterpillarGame" style="width: 200px; height: 200px;">
-  <form action="games/Caterpillar/caterpillar.html">
-  <button type="submit">Caterpillar</button>                      
-  </form>
-  </div>
+        <br>
+        <br>
+        <div style="text-align: center;">
+            <p style="font-size: 24px;">Python Games (might require downloading)</p>
+        </div>
 
-  <div class="column" style="text-align: center;">
-  <img src="https://i.ibb.co/J5G6vFY/favicon9.png" alt="ComingSoon" style="width: 200px; height: 200px;">
-  <form action="https://replit.com/@vyom1103/ConsoleRPG">
-  <button type="submit">ConsoleRPG</button>                      
-  </form>
-  </div>
+        <div class="row">
 
-  <div class="column" style="text-align: center;">
-  <img src="https://i.ibb.co/J5G6vFY/favicon9.png" alt="ComingSoon" style="width: 200px; height: 200px;">
-  <form action="https://replit.com/@vyom1103/Chatbot-v22">
-  <button type="submit">Chatbot v2.2</button>                      
-  </form>
-  </div>
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav13.png" style="width: 200px; height: 200px">
+                <form action="#" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Airline Simulator</button>                           
+                </form>
+            </div>
 
-  <div class="column" style="text-align: center;">
-  <img src="https://i.ibb.co/J5G6vFY/favicon9.png" alt="ComingSoon" style="width: 200px; height: 200px;">
-  <form action="https://replit.com/@MarcoSala2/Onyx-v320">
-  <button type="submit">Onyx Chatbot</button>                      
-  </form>
-  </div>
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav10.png" style="width: 200px; height: 200px">
+                <form action="https://replit.com/@vyom1103/ConsoleRPG?" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Console RPG</button>                           
+                </form>
+            </div>
 
- </div>
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav5.png" style="width: 200px; height: 200px">
+                <form action="#" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Caterpillar</button>                           
+                </form>
+            </div>
 
-  
-      
-</body>
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav6.png" style="width: 200px; height: 200px">
+                <form action="#" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Egg Catcher</button>                           
+                </form>
+            </div>
+
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav11.png" style="width: 200px; height: 200px">
+                <form action="https://entyxd.itch.io/entypaint" >
+                    <button type="submit" style="margin-top: 15px;" class="button">EntyPaint</button>                           
+                </form>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav12.png" style="width: 200px; height: 200px">
+                <form action="#" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Tile Generation Sandbox</button>                           
+                </form>
+            </div>
+
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav17.png" style="width: 200px; height: 200px">
+                <form action="#" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Fishing Quest</button>                           
+                </form>
+            </div>
+
+        </div>
+
+        <br>
+        <br>
+
+        <div style="text-align: center;">
+            <p style="font-size: 24px;">Scratch Games</p>
+        </div>
+
+        <div class="row">
+
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav14.png" style="width: 200px; height: 200px">
+                <form action="https://scratch.mit.edu/projects/915323031/" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Rocket Dodge</button>                           
+                </form>
+            </div>
+
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav16.png" style="width: 200px; height: 200px">
+                <form action="https://scratch.mit.edu/projects/779341009/" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Banana Hunt</button>                           
+                </form>
+            </div>
+
+            <div class="column" style="text-align: center;">
+                <img src="Favicons/fav15.png" style="width: 200px; height: 200px">
+                <form action="#" >
+                    <button type="submit" style="margin-top: 15px;" class="button">Monke Island</button>                           
+                </form>
+            </div>
+
+        </div>
+
+    </body>
 </html>
